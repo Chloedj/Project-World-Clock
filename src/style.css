@@ -1,0 +1,63 @@
+body {
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgb(253, 239, 132) 0%, rgb(247, 198, 169) 54.2%, rgb(21, 186, 196) 100.3%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+
+select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+}
+
+h2 {
+    margin: 0 0 5px;
+    font-size: 28px;
+}
+
+.date {
+    opacity: 0.7;
+}
+
+.city {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 20px 0;
+    border-bottom: 1px dashed lightgray;
+}
+
+.city:last-child {
+    border: none;
+}
+
+.time {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.time small {
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+footer {
+    text-align: center;
+    font-size: 15px;
+}
