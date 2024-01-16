@@ -28,8 +28,8 @@ function updateCity(event) {
     let cityName, cityTime;
 
     if (cityTimeZone === 'current') {
-        cityTimeZone = moment.tz.guess(); // Guess the current time zone
-        cityName = cityTimeZone; // Use the time zone identifier as the city name
+        cityTimeZone = moment.tz.guess(); 
+        cityName = cityTimeZone; 
         cityTime = moment().tz(cityTimeZone);
     } else {
         cityName = selectedOption.text; 
@@ -44,7 +44,8 @@ function updateCity(event) {
             </div>
             <div class="time">${cityTime.format("h:mm:ss [<small>]A[</small>]")}</div>
           </div>
-        </div>`;
+        </div>
+        <a href="index.html">Show All</a>`;
 }
 
 
