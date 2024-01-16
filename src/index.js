@@ -25,19 +25,28 @@ function updateCity(event) {
     let selectElement = event.target;
     let selectedOption = selectElement.options[selectElement.selectedIndex];
     let cityTimeZone = selectElement.value;
-    let cityName = selectedOption.text; 
-    let cityTime = moment().tz(cityTimeZone);
+    let cityName, cityTime;
+
+    if (cityTimeZone === 'current') {
+        cityTimeZone = moment.tz.guess(); // Guess the current time zone
+        cityName = cityTimeZone; // Use the time zone identifier as the city name
+        cityTime = moment().tz(cityTimeZone);
+    } else {
+        cityName = selectedOption.text; 
+        cityTime = moment().tz(cityTimeZone);
+    }
 
     let citiesElement = document.querySelector("#cities");
     citiesElement.innerHTML = `<div class="city">
             <div>
-              <h2>${cityName}</h2> <!-- Using cityName instead of cityTimeZone -->
+              <h2>${cityName}</h2>
               <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
             </div>
             <div class="time">${cityTime.format("h:mm:ss [<small>]A[</small>]")}</div>
           </div>
         </div>`;
 }
+
 
 let citiesSelectElement = document.querySelector("#city");
 citiesSelectElement.addEventListener("change", updateCity);
