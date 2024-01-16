@@ -43,10 +43,6 @@ h2 {
     border-bottom: 1px dashed lightgray;
 }
 
-.city:last-child {
-    border: none;
-}
-
 .time {
     font-size: 48px;
     font-weight: bold;
