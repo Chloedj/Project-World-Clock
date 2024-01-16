@@ -1,3 +1,5 @@
+let updateCityInterval;
+
 function updateTime(){
 //London
 let londonElement = document.querySelector("#london");
@@ -17,11 +19,38 @@ let orlandoTimeElement = orlandoElement.querySelector(".time")
 let orlandoTime = moment().tz("America/Kentucky/Monticello");
 orlandoDateElement.innerHTML = orlandoTime.format("MMMM Do YYYY")
 orlandoTimeElement.innerHTML = `${orlandoTime.format("h:mm:ss [<small>]A[</small>]")}`
-}}
+}
+
+// Johannesburg
+let johannesburgElement = document.querySelector("#johannesburg");
+if (johannesburgElement) {
+  let johannesburgDateElement = johannesburgElement.querySelector(".date");
+  let johannesburgTimeElement = johannesburgElement.querySelector(".time");
+  let johannesburgTime = moment().tz("Africa/Johannesburg");
+  johannesburgDateElement.innerHTML = johannesburgTime.format("MMMM Do YYYY");
+  johannesburgTimeElement.innerHTML = `${johannesburgTime.format("h:mm:ss [<small>]A[</small>]")}`;
+}
+}
+
 updateTime();
 setInterval (updateTime, 1000);
 
+function updateSelectedCityTime() {
+  let cityTimeZone = document.querySelector("#city").value;
+  if (cityTimeZone !== '') {
+    let cityTime = moment().tz(cityTimeZone);
+    let citiesElement = document.querySelector("#cities .city");
+    if (citiesElement) {
+      citiesElement.querySelector(".date").innerHTML = cityTime.format("MMMM Do YYYY");
+      citiesElement.querySelector(".time").innerHTML = cityTime.format("h:mm:ss [<small>]A[</small>]");
+    }
+  }
+}
+
+
 function updateCity(event) {
+        clearInterval(updateCityInterval);
+
     let selectElement = event.target;
     let selectedOption = selectElement.options[selectElement.selectedIndex];
     let cityTimeZone = selectElement.value;
@@ -46,6 +75,11 @@ function updateCity(event) {
           </div>
         </div>
         <a href="index.html">Show All</a>`;
+
+    
+    updateSelectedCityTime();
+
+    updateCityInterval = setInterval(updateSelectedCityTime, 1000);
 }
 
 
